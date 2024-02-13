@@ -2,9 +2,9 @@ name: trivy-scanning
 run-name: trivy-dockle-scanning
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   
 
 permissions: write-all
