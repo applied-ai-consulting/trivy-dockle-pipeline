@@ -1,0 +1,24 @@
+name: checkout_test
+on:
+  push:
+    branches:
+      -main
+
+jobs:
+  format-code:
+    name: prettier
+    runs-on: self-hosted
+    container:
+      image: public.ecr.aws/p1s5q4h3/aitest-ui-images:dev
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        env:
+          GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+            
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Run prettier
+        run: npm run format:check
